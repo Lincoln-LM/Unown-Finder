@@ -53,10 +53,19 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="PIDToLetterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PIDToLetterForm.Designer.cs">
+      <DependentUpon>PIDToLetterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PIDToLetterForm.resx">
+      <DependentUpon>PIDToLetterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -79,6 +88,93 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\%24this.Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-c.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-e.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-g.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-h.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-i.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-j.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-k.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-l.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-m.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-o.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-p.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-q.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-t.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-u.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-v.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-y.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-z.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-em.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unown-qm.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

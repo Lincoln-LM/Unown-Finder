@@ -21,10 +21,10 @@ namespace Unown
         private void GenerateFrames(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            uint seed,location;
+            uint initial,location;
             try
             {
-                seed = uint.Parse(SeedTextBox.Text, System.Globalization.NumberStyles.HexNumber);
+                initial = uint.Parse(SeedTextBox.Text, System.Globalization.NumberStyles.HexNumber);
             }
             catch
             {
@@ -40,7 +40,7 @@ namespace Unown
                 MessageBox.Show("Error: Location has not been entered properly, please fix this if you want results.");
                 return;
             }
-            LCRNG rng = new LCRNG((int)seed);
+            LCRNG rng = new LCRNG(initial);
             uint startingFrame, maxFrames;
             try
             {
@@ -127,27 +127,28 @@ namespace Unown
             while (cnt < maxFrames + delay)
             {
                 bool flag = true;
+                uint seed = rng.seed;
                 LCRNG go = new LCRNG(rng.nextUInt());
-                uint slot = (uint)(go.nextUShort() % 100);
+                uint slot = go.nextUShort() % 100;
                 string targetLetter = GetTargetLetter(location, slot);
                 go.nextUInt();
                 string letter = "";
                 uint pid = 0;
                 while (letter != targetLetter)
                 {
-                    uint high = (uint)go.nextUShort();
-                    uint low = (uint)go.nextUShort();
+                    uint high = go.nextUShort();
+                    uint low = go.nextUShort();
                     pid = (high << 16) | low;
                     letter = GetLetter(pid);
                 }
-                uint iv1 = (uint)go.nextUShort();
-                uint iv2 = (uint)go.nextUShort();
+                uint iv1 = go.nextUShort();
+                uint iv2 = go.nextUShort();
                 List<uint> ivs = GetIVs(iv1, iv2);
                 string shiny = "No";
                 
                 
-                uint psv = (uint)(((pid & 0xFFFF) ^ (pid >> 16)) / 8);
-                string nature = natures[(int)((uint)pid % 25)];
+                uint psv = ((pid & 0xFFFF) ^ (pid >> 16)) / 8;
+                string nature = natures[(int)(pid % 25)];
 
                 if (tsv == psv)
                 {
@@ -187,7 +188,7 @@ namespace Unown
 
                 if (flag)
                 {
-                    dataGridView1.Rows.Add(cnt + startingFrame, pid.ToString("X"), shiny, letter, nature, ivs[0], ivs[1], ivs[2], ivs[3], ivs[4], ivs[5]);
+                    dataGridView1.Rows.Add(cnt + startingFrame, seed.ToString("X"), pid.ToString("X"), psv, shiny, slot, letter, nature, ivs[0], ivs[1], ivs[2], ivs[3], ivs[4], ivs[5], GetHPowerType(ivs), GetHPowerDamage(ivs));
                 }
                 cnt += 1;
             }
@@ -195,19 +196,33 @@ namespace Unown
 
 
         }
-
-        public bool GetShiny(int tsv, int pid)
+        private void AdvancedCheck_CheckedChanged(object sender, EventArgs e)
         {
-            return (((uint)pid & 0xffff) ^ ((uint)pid >> 16) ^ tsv ) < 8;
+            dataGridView1.Columns["Seed"].Visible = AdvancedCheck.Checked;
+            dataGridView1.Columns["PSV"].Visible = AdvancedCheck.Checked;
+            dataGridView1.Columns["Slot"].Visible = AdvancedCheck.Checked;
         }
 
-        public List<string> characters = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "!", "?" };
-        List<string> natures = new List<string> {
+
+        public List<string> characters = new List<string> { "A", "B", "C", "D", "E",
+                                                            "F", "G", "H", "I", "J",
+                                                            "K", "L", "M", "N", "O",
+                                                            "P", "Q", "R", "S", "T",
+                                                            "U", "V", "W", "X", "Y", 
+                                                                 "Z", "!", "?" };
+        public List<string> natures = new List<string> {
                 "Hardy","Lonely","Brave","Adamant","Naughty",
                 "Bold","Docile","Relaxed","Impish","Lax",
                 "Timid","Hasty","Serious","Jolly","Naive",
                 "Modest","Mild","Quiet","Bashful","Rash",
                 "Calm","Gentle","Sassy","Careful","Quirky"};
+        public List<string> hpowertypes = new List<string> { "Fighting", "Flying", "Poison",
+                                                             "Ground", "Rock", "Bug",
+                                                             "Ghost", "Steel", "Fire",
+                                                             "Water", "Grass", "Electric",
+                                                             "Psychic", "Ice", "Dragon", 
+                                                                        "Dark" };
+
 
         private List<uint> GetIVs(uint iv1, uint iv2)
         {
@@ -219,7 +234,36 @@ namespace Unown
             uint spe = iv2 & 0x1f;
             return new List<uint> { hp, atk, defense, spa, spd, spe };
         }
-        
+
+        private string GetHPowerType(List<uint> ivs)
+        {
+            uint a, b, c, d, e, f;
+
+            a = ivs[0] & 1;
+            b = ivs[1] & 1;
+            c = ivs[2] & 1;
+            d = ivs[5] & 1;
+            e = ivs[3] & 1;
+            f = ivs[4] & 1;
+
+            return hpowertypes[(int)(((a + 2 * b + 4 * c + 8 * d + 16 * e + 32 * f) * 15) / 63)];
+        }
+
+        private uint GetHPowerDamage(List<uint> ivs)
+        {
+            uint u, v, w, x, y, z;
+
+            u = (ivs[0] >> 1) & 1;
+            v = (ivs[1] >> 1) & 1;
+            w = (ivs[2] >> 1) & 1;
+            x = (ivs[5] >> 1) & 1;
+            y = (ivs[3] >> 1) & 1;
+            z = (ivs[4] >> 1) & 1;
+
+            return ((u + 2 * v + 4 * w + 8 * x + 16 * y + 32 * z) * 40) / 63 + 30;
+
+        }
+
         private String GetLetter(uint pid)
         {
             uint val1, val2, val3, val4, val;
@@ -365,123 +409,14 @@ namespace Unown
                     return "!";
                 }
             }
-            return "!";
+            return "0";
 
         }
 
-        private void TIDLabel_Click(object sender, EventArgs e)
+        private void PIDToLetterButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void SIDLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SIDTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TIDTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LocationTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LocationLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void StartingFrameLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FrameAmountLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SeedLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel6_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void ShinyLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ShinyCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel7_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LocationComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FrameAmountTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void StartingFrameTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SeedTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Main_Load(object sender, EventArgs e)
-        {
-
+            PIDToLetterForm pidform = new PIDToLetterForm();
+            pidform.Show();
         }
     }
 }

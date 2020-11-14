@@ -30,17 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Shiny = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Form = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nature = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ATK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DEF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.TIDTextBox = new System.Windows.Forms.TextBox();
             this.TIDLabel = new System.Windows.Forms.Label();
@@ -91,6 +80,24 @@
             this.label3 = new System.Windows.Forms.Label();
             this.MinHPUD = new System.Windows.Forms.NumericUpDown();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Seed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Shiny = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Form = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nature = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ATK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DEF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hidden = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Power = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AdvancedCheck = new System.Windows.Forms.CheckBox();
+            this.PIDToLetterButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -118,13 +125,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDark;
-            this.dataGridView1.ForeColor = System.Drawing.Color.Black;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Frame,
+            this.Seed,
             this.PID,
+            this.PSV,
             this.Shiny,
+            this.Slot,
             this.Form,
             this.Nature,
             this.HP,
@@ -132,76 +141,14 @@
             this.DEF,
             this.SPA,
             this.SPD,
-            this.SPE});
+            this.SPE,
+            this.Hidden,
+            this.Power});
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(35)))), ((int)(((byte)(45)))));
             this.dataGridView1.Location = new System.Drawing.Point(1, 1);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(726, 303);
+            this.dataGridView1.Size = new System.Drawing.Size(801, 303);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // Frame
-            // 
-            this.Frame.HeaderText = "Frame";
-            this.Frame.Name = "Frame";
-            // 
-            // PID
-            // 
-            this.PID.HeaderText = "PID";
-            this.PID.Name = "PID";
-            // 
-            // Shiny
-            // 
-            this.Shiny.HeaderText = "Shiny";
-            this.Shiny.Name = "Shiny";
-            this.Shiny.Width = 70;
-            // 
-            // Form
-            // 
-            this.Form.HeaderText = "Form";
-            this.Form.Name = "Form";
-            this.Form.Width = 40;
-            // 
-            // Nature
-            // 
-            this.Nature.HeaderText = "Nature";
-            this.Nature.Name = "Nature";
-            this.Nature.Width = 70;
-            // 
-            // HP
-            // 
-            this.HP.HeaderText = "HP";
-            this.HP.Name = "HP";
-            this.HP.Width = 40;
-            // 
-            // ATK
-            // 
-            this.ATK.HeaderText = "ATK";
-            this.ATK.Name = "ATK";
-            this.ATK.Width = 40;
-            // 
-            // DEF
-            // 
-            this.DEF.HeaderText = "DEF";
-            this.DEF.Name = "DEF";
-            this.DEF.Width = 40;
-            // 
-            // SPA
-            // 
-            this.SPA.HeaderText = "SPA";
-            this.SPA.Name = "SPA";
-            this.SPA.Width = 40;
-            // 
-            // SPD
-            // 
-            this.SPD.HeaderText = "SPD";
-            this.SPD.Name = "SPD";
-            this.SPD.Width = 40;
-            // 
-            // SPE
-            // 
-            this.SPE.HeaderText = "SPE";
-            this.SPE.Name = "SPE";
-            this.SPE.Width = 40;
             // 
             // panel1
             // 
@@ -212,7 +159,7 @@
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(11, 314);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(728, 305);
+            this.panel1.Size = new System.Drawing.Size(803, 305);
             this.panel1.TabIndex = 2;
             // 
             // TIDTextBox
@@ -224,7 +171,6 @@
             this.TIDTextBox.Name = "TIDTextBox";
             this.TIDTextBox.Size = new System.Drawing.Size(100, 20);
             this.TIDTextBox.TabIndex = 3;
-            this.TIDTextBox.TextChanged += new System.EventHandler(this.TIDTextBox_TextChanged);
             // 
             // TIDLabel
             // 
@@ -235,7 +181,6 @@
             this.TIDLabel.Size = new System.Drawing.Size(28, 13);
             this.TIDLabel.TabIndex = 4;
             this.TIDLabel.Text = "TID:";
-            this.TIDLabel.Click += new System.EventHandler(this.TIDLabel_Click);
             // 
             // SIDLabel
             // 
@@ -246,7 +191,6 @@
             this.SIDLabel.Size = new System.Drawing.Size(28, 13);
             this.SIDLabel.TabIndex = 6;
             this.SIDLabel.Text = "SID:";
-            this.SIDLabel.Click += new System.EventHandler(this.SIDLabel_Click);
             // 
             // SIDTextBox
             // 
@@ -257,7 +201,6 @@
             this.SIDTextBox.Name = "SIDTextBox";
             this.SIDTextBox.Size = new System.Drawing.Size(100, 20);
             this.SIDTextBox.TabIndex = 5;
-            this.SIDTextBox.TextChanged += new System.EventHandler(this.SIDTextBox_TextChanged);
             // 
             // button1
             // 
@@ -279,7 +222,6 @@
             this.LocationLabel.Size = new System.Drawing.Size(51, 13);
             this.LocationLabel.TabIndex = 9;
             this.LocationLabel.Text = "Location:";
-            this.LocationLabel.Click += new System.EventHandler(this.LocationLabel_Click);
             // 
             // FormLabel
             // 
@@ -290,7 +232,6 @@
             this.FormLabel.Size = new System.Drawing.Size(30, 13);
             this.FormLabel.TabIndex = 11;
             this.FormLabel.Text = "Form";
-            this.FormLabel.Click += new System.EventHandler(this.FormLabel_Click);
             // 
             // ShinyCheckBox
             // 
@@ -300,7 +241,6 @@
             this.ShinyCheckBox.Size = new System.Drawing.Size(15, 14);
             this.ShinyCheckBox.TabIndex = 13;
             this.ShinyCheckBox.UseVisualStyleBackColor = true;
-            this.ShinyCheckBox.CheckedChanged += new System.EventHandler(this.ShinyCheckBox_CheckedChanged);
             // 
             // NatureLabel
             // 
@@ -321,7 +261,6 @@
             this.ShinyLabel.Size = new System.Drawing.Size(33, 13);
             this.ShinyLabel.TabIndex = 16;
             this.ShinyLabel.Text = "Shiny";
-            this.ShinyLabel.Click += new System.EventHandler(this.ShinyLabel_Click);
             // 
             // FormCheckBox
             // 
@@ -350,7 +289,6 @@
             this.SeedLabel.Size = new System.Drawing.Size(35, 13);
             this.SeedLabel.TabIndex = 20;
             this.SeedLabel.Text = "Seed:";
-            this.SeedLabel.Click += new System.EventHandler(this.SeedLabel_Click);
             // 
             // SeedTextBox
             // 
@@ -359,9 +297,9 @@
             this.SeedTextBox.ForeColor = System.Drawing.Color.Black;
             this.SeedTextBox.Location = new System.Drawing.Point(112, 206);
             this.SeedTextBox.Name = "SeedTextBox";
-            this.SeedTextBox.Size = new System.Drawing.Size(38, 20);
+            this.SeedTextBox.Size = new System.Drawing.Size(100, 20);
             this.SeedTextBox.TabIndex = 19;
-            this.SeedTextBox.TextChanged += new System.EventHandler(this.SeedTextBox_TextChanged);
+            this.SeedTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // StartingFrameLabel
             // 
@@ -372,7 +310,6 @@
             this.StartingFrameLabel.Size = new System.Drawing.Size(78, 13);
             this.StartingFrameLabel.TabIndex = 22;
             this.StartingFrameLabel.Text = "Starting Frame:";
-            this.StartingFrameLabel.Click += new System.EventHandler(this.StartingFrameLabel_Click);
             // 
             // StartingFrameTextBox
             // 
@@ -383,7 +320,6 @@
             this.StartingFrameTextBox.Name = "StartingFrameTextBox";
             this.StartingFrameTextBox.Size = new System.Drawing.Size(100, 20);
             this.StartingFrameTextBox.TabIndex = 21;
-            this.StartingFrameTextBox.TextChanged += new System.EventHandler(this.StartingFrameTextBox_TextChanged);
             // 
             // FrameAmountLabel
             // 
@@ -394,7 +330,6 @@
             this.FrameAmountLabel.Size = new System.Drawing.Size(95, 13);
             this.FrameAmountLabel.TabIndex = 24;
             this.FrameAmountLabel.Text = "Amount of Frames:";
-            this.FrameAmountLabel.Click += new System.EventHandler(this.FrameAmountLabel_Click);
             // 
             // FrameAmountTextBox
             // 
@@ -405,7 +340,6 @@
             this.FrameAmountTextBox.Name = "FrameAmountTextBox";
             this.FrameAmountTextBox.Size = new System.Drawing.Size(100, 20);
             this.FrameAmountTextBox.TabIndex = 23;
-            this.FrameAmountTextBox.TextChanged += new System.EventHandler(this.FrameAmountTextBox_TextChanged);
             // 
             // LocationComboBox
             // 
@@ -425,7 +359,6 @@
             this.LocationComboBox.Name = "LocationComboBox";
             this.LocationComboBox.Size = new System.Drawing.Size(146, 20);
             this.LocationComboBox.TabIndex = 25;
-            this.LocationComboBox.SelectedIndexChanged += new System.EventHandler(this.LocationComboBox_SelectedIndexChanged);
             // 
             // panel3
             // 
@@ -443,7 +376,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(245, 177);
             this.panel2.TabIndex = 26;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // panel5
             // 
@@ -452,7 +384,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(247, 179);
             this.panel5.TabIndex = 27;
-            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // label1
             // 
@@ -464,7 +395,6 @@
             this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.TabIndex = 28;
             this.label1.Text = "RNG Info";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -476,7 +406,6 @@
             this.label2.Size = new System.Drawing.Size(38, 15);
             this.label2.TabIndex = 31;
             this.label2.Text = "Filters";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel6
             // 
@@ -514,9 +443,8 @@
             this.panel6.Controls.Add(this.MinHPUD);
             this.panel6.Location = new System.Drawing.Point(1, 1);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(433, 218);
+            this.panel6.Size = new System.Drawing.Size(508, 218);
             this.panel6.TabIndex = 27;
-            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
             // FormComboBox
             // 
@@ -892,16 +820,136 @@
             this.panel7.Controls.Add(this.panel6);
             this.panel7.Location = new System.Drawing.Point(306, 31);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(435, 220);
+            this.panel7.Size = new System.Drawing.Size(510, 220);
             this.panel7.TabIndex = 30;
-            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
+            // 
+            // Frame
+            // 
+            this.Frame.HeaderText = "Frame";
+            this.Frame.Name = "Frame";
+            // 
+            // Seed
+            // 
+            this.Seed.HeaderText = "Seed";
+            this.Seed.Name = "Seed";
+            this.Seed.Visible = false;
+            // 
+            // PID
+            // 
+            this.PID.HeaderText = "PID";
+            this.PID.Name = "PID";
+            // 
+            // PSV
+            // 
+            this.PSV.HeaderText = "PSV";
+            this.PSV.Name = "PSV";
+            this.PSV.Visible = false;
+            this.PSV.Width = 50;
+            // 
+            // Shiny
+            // 
+            this.Shiny.HeaderText = "Shiny";
+            this.Shiny.Name = "Shiny";
+            this.Shiny.Width = 70;
+            // 
+            // Slot
+            // 
+            this.Slot.HeaderText = "Slot";
+            this.Slot.Name = "Slot";
+            this.Slot.Visible = false;
+            this.Slot.Width = 50;
+            // 
+            // Form
+            // 
+            this.Form.HeaderText = "Form";
+            this.Form.Name = "Form";
+            this.Form.Width = 40;
+            // 
+            // Nature
+            // 
+            this.Nature.HeaderText = "Nature";
+            this.Nature.Name = "Nature";
+            this.Nature.Width = 70;
+            // 
+            // HP
+            // 
+            this.HP.HeaderText = "HP";
+            this.HP.Name = "HP";
+            this.HP.Width = 40;
+            // 
+            // ATK
+            // 
+            this.ATK.HeaderText = "ATK";
+            this.ATK.Name = "ATK";
+            this.ATK.Width = 40;
+            // 
+            // DEF
+            // 
+            this.DEF.HeaderText = "DEF";
+            this.DEF.Name = "DEF";
+            this.DEF.Width = 40;
+            // 
+            // SPA
+            // 
+            this.SPA.HeaderText = "SPA";
+            this.SPA.Name = "SPA";
+            this.SPA.Width = 40;
+            // 
+            // SPD
+            // 
+            this.SPD.HeaderText = "SPD";
+            this.SPD.Name = "SPD";
+            this.SPD.Width = 40;
+            // 
+            // SPE
+            // 
+            this.SPE.HeaderText = "SPE";
+            this.SPE.Name = "SPE";
+            this.SPE.Width = 40;
+            // 
+            // Hidden
+            // 
+            this.Hidden.HeaderText = "Hidden";
+            this.Hidden.Name = "Hidden";
+            this.Hidden.Width = 70;
+            // 
+            // Power
+            // 
+            this.Power.HeaderText = "Power";
+            this.Power.Name = "Power";
+            this.Power.Width = 50;
+            // 
+            // AdvancedCheck
+            // 
+            this.AdvancedCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AdvancedCheck.AutoSize = true;
+            this.AdvancedCheck.Location = new System.Drawing.Point(738, 10);
+            this.AdvancedCheck.Name = "AdvancedCheck";
+            this.AdvancedCheck.Size = new System.Drawing.Size(75, 17);
+            this.AdvancedCheck.TabIndex = 32;
+            this.AdvancedCheck.Text = "Advanced";
+            this.AdvancedCheck.UseVisualStyleBackColor = true;
+            this.AdvancedCheck.CheckedChanged += new System.EventHandler(this.AdvancedCheck_CheckedChanged);
+            // 
+            // PIDToLetterButton
+            // 
+            this.PIDToLetterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PIDToLetterButton.Location = new System.Drawing.Point(741, 257);
+            this.PIDToLetterButton.Name = "PIDToLetterButton";
+            this.PIDToLetterButton.Size = new System.Drawing.Size(75, 23);
+            this.PIDToLetterButton.TabIndex = 33;
+            this.PIDToLetterButton.Text = "PID to Letter";
+            this.PIDToLetterButton.UseVisualStyleBackColor = true;
+            this.PIDToLetterButton.Click += new System.EventHandler(this.PIDToLetterButton_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(750, 630);
+            this.ClientSize = new System.Drawing.Size(825, 630);
+            this.Controls.Add(this.PIDToLetterButton);
+            this.Controls.Add(this.AdvancedCheck);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.label1);
@@ -921,11 +969,10 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel5);
-            this.ForeColor = System.Drawing.SystemColors.Control;
+            this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.Text = "Unown Finder";
-            this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -971,17 +1018,6 @@
         private System.Windows.Forms.TextBox StartingFrameTextBox;
         private System.Windows.Forms.Label FrameAmountLabel;
         private System.Windows.Forms.TextBox FrameAmountTextBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Frame;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Shiny;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Form;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nature;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ATK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DEF;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SPA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SPD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SPE;
         private System.Windows.Forms.ComboBox LocationComboBox;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
@@ -1013,6 +1049,24 @@
         private System.Windows.Forms.CheckBox DelayCheckBox;
         private System.Windows.Forms.ComboBox NatureComboBox;
         private System.Windows.Forms.ComboBox FormComboBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Frame;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Seed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PSV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Shiny;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Slot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Form;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nature;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ATK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DEF;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SPA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SPD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SPE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Hidden;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Power;
+        private System.Windows.Forms.CheckBox AdvancedCheck;
+        private System.Windows.Forms.Button PIDToLetterButton;
     }
 }
 

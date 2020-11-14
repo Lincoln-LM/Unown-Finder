@@ -8,21 +8,21 @@ namespace Unown
 {
     internal class LCRNG
     {
-        public int seed;
+        public uint seed;
 
-        public LCRNG(int seed)
+        public LCRNG(uint seed)
         {
             this.seed = seed;
         }
 
-        public int nextUInt()
+        public uint nextUInt()
         {
-            this.seed = (int)((this.seed * 0x41c64e6d + 0x6073) & 0xffffffff);
+            this.seed = this.seed * 0x41c64e6d + 0x6073;
             return this.seed;
         }
-        public int nextUShort()
+        public uint nextUShort()
         {
-            return (int)((uint)this.nextUInt() >> 16);
+            return this.nextUInt() >> 16;
         }
     }
 }
