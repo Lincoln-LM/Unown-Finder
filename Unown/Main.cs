@@ -149,13 +149,15 @@ namespace Unown
                 
                 
                 uint psv = ((pid & 0xFFFF) ^ (pid >> 16)) / 8;
-                int natureint = (int)(pid % 25);
-                string nature = natures[natureint];
-
-                if (tsv == psv)
+                if (psv == tsv)
                 {
                     shiny = "Yes";
                 }
+
+                int natureint = (int)(pid % 25);
+                string nature = natures[natureint];
+
+                
                 if (ShinyCheckBox.Checked)
                 {
                     if (!(tsv == psv))
@@ -419,6 +421,23 @@ namespace Unown
         {
             PIDToLetterForm pidform = new PIDToLetterForm();
             pidform.Show();
+        }
+
+        private void SearcherButton_Click(object sender, EventArgs e)
+        {
+            uint tid, sid, tsv;
+            try
+            {
+                tid = uint.Parse(TIDTextBox.Text);
+                sid = uint.Parse(SIDTextBox.Text);
+                tsv = (tid ^ sid) / 8;
+            }
+            catch
+            {
+                tsv = 8193;
+            }
+            Searcher searcherform = new Searcher(tsv);
+            searcherform.Show();
         }
     }
 }

@@ -30,6 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Seed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Shiny = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Form = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nature = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ATK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DEF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hidden = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Power = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.TIDTextBox = new System.Windows.Forms.TextBox();
             this.TIDLabel = new System.Windows.Forms.Label();
@@ -80,24 +96,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.MinHPUD = new System.Windows.Forms.NumericUpDown();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Seed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Shiny = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Form = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nature = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ATK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DEF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Hidden = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Power = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AdvancedCheck = new System.Windows.Forms.CheckBox();
             this.PIDToLetterButton = new System.Windows.Forms.Button();
+            this.SearcherButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -149,6 +150,102 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(801, 303);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // Frame
+            // 
+            this.Frame.HeaderText = "Frame";
+            this.Frame.Name = "Frame";
+            // 
+            // Seed
+            // 
+            this.Seed.HeaderText = "Seed";
+            this.Seed.Name = "Seed";
+            this.Seed.Visible = false;
+            // 
+            // PID
+            // 
+            this.PID.HeaderText = "PID";
+            this.PID.Name = "PID";
+            // 
+            // PSV
+            // 
+            this.PSV.HeaderText = "PSV";
+            this.PSV.Name = "PSV";
+            this.PSV.Visible = false;
+            this.PSV.Width = 50;
+            // 
+            // Shiny
+            // 
+            this.Shiny.HeaderText = "Shiny";
+            this.Shiny.Name = "Shiny";
+            this.Shiny.Width = 70;
+            // 
+            // Slot
+            // 
+            this.Slot.HeaderText = "Slot";
+            this.Slot.Name = "Slot";
+            this.Slot.Visible = false;
+            this.Slot.Width = 50;
+            // 
+            // Form
+            // 
+            this.Form.HeaderText = "Form";
+            this.Form.Name = "Form";
+            this.Form.Width = 40;
+            // 
+            // Nature
+            // 
+            this.Nature.HeaderText = "Nature";
+            this.Nature.Name = "Nature";
+            this.Nature.Width = 70;
+            // 
+            // HP
+            // 
+            this.HP.HeaderText = "HP";
+            this.HP.Name = "HP";
+            this.HP.Width = 40;
+            // 
+            // ATK
+            // 
+            this.ATK.HeaderText = "ATK";
+            this.ATK.Name = "ATK";
+            this.ATK.Width = 40;
+            // 
+            // DEF
+            // 
+            this.DEF.HeaderText = "DEF";
+            this.DEF.Name = "DEF";
+            this.DEF.Width = 40;
+            // 
+            // SPA
+            // 
+            this.SPA.HeaderText = "SPA";
+            this.SPA.Name = "SPA";
+            this.SPA.Width = 40;
+            // 
+            // SPD
+            // 
+            this.SPD.HeaderText = "SPD";
+            this.SPD.Name = "SPD";
+            this.SPD.Width = 40;
+            // 
+            // SPE
+            // 
+            this.SPE.HeaderText = "SPE";
+            this.SPE.Name = "SPE";
+            this.SPE.Width = 40;
+            // 
+            // Hidden
+            // 
+            this.Hidden.HeaderText = "Hidden";
+            this.Hidden.Name = "Hidden";
+            this.Hidden.Width = 70;
+            // 
+            // Power
+            // 
+            this.Power.HeaderText = "Power";
+            this.Power.Name = "Power";
+            this.Power.Width = 50;
             // 
             // panel1
             // 
@@ -823,102 +920,6 @@
             this.panel7.Size = new System.Drawing.Size(510, 220);
             this.panel7.TabIndex = 30;
             // 
-            // Frame
-            // 
-            this.Frame.HeaderText = "Frame";
-            this.Frame.Name = "Frame";
-            // 
-            // Seed
-            // 
-            this.Seed.HeaderText = "Seed";
-            this.Seed.Name = "Seed";
-            this.Seed.Visible = false;
-            // 
-            // PID
-            // 
-            this.PID.HeaderText = "PID";
-            this.PID.Name = "PID";
-            // 
-            // PSV
-            // 
-            this.PSV.HeaderText = "PSV";
-            this.PSV.Name = "PSV";
-            this.PSV.Visible = false;
-            this.PSV.Width = 50;
-            // 
-            // Shiny
-            // 
-            this.Shiny.HeaderText = "Shiny";
-            this.Shiny.Name = "Shiny";
-            this.Shiny.Width = 70;
-            // 
-            // Slot
-            // 
-            this.Slot.HeaderText = "Slot";
-            this.Slot.Name = "Slot";
-            this.Slot.Visible = false;
-            this.Slot.Width = 50;
-            // 
-            // Form
-            // 
-            this.Form.HeaderText = "Form";
-            this.Form.Name = "Form";
-            this.Form.Width = 40;
-            // 
-            // Nature
-            // 
-            this.Nature.HeaderText = "Nature";
-            this.Nature.Name = "Nature";
-            this.Nature.Width = 70;
-            // 
-            // HP
-            // 
-            this.HP.HeaderText = "HP";
-            this.HP.Name = "HP";
-            this.HP.Width = 40;
-            // 
-            // ATK
-            // 
-            this.ATK.HeaderText = "ATK";
-            this.ATK.Name = "ATK";
-            this.ATK.Width = 40;
-            // 
-            // DEF
-            // 
-            this.DEF.HeaderText = "DEF";
-            this.DEF.Name = "DEF";
-            this.DEF.Width = 40;
-            // 
-            // SPA
-            // 
-            this.SPA.HeaderText = "SPA";
-            this.SPA.Name = "SPA";
-            this.SPA.Width = 40;
-            // 
-            // SPD
-            // 
-            this.SPD.HeaderText = "SPD";
-            this.SPD.Name = "SPD";
-            this.SPD.Width = 40;
-            // 
-            // SPE
-            // 
-            this.SPE.HeaderText = "SPE";
-            this.SPE.Name = "SPE";
-            this.SPE.Width = 40;
-            // 
-            // Hidden
-            // 
-            this.Hidden.HeaderText = "Hidden";
-            this.Hidden.Name = "Hidden";
-            this.Hidden.Width = 70;
-            // 
-            // Power
-            // 
-            this.Power.HeaderText = "Power";
-            this.Power.Name = "Power";
-            this.Power.Width = 50;
-            // 
             // AdvancedCheck
             // 
             this.AdvancedCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -942,12 +943,24 @@
             this.PIDToLetterButton.UseVisualStyleBackColor = true;
             this.PIDToLetterButton.Click += new System.EventHandler(this.PIDToLetterButton_Click);
             // 
+            // SearcherButton
+            // 
+            this.SearcherButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearcherButton.Location = new System.Drawing.Point(741, 285);
+            this.SearcherButton.Name = "SearcherButton";
+            this.SearcherButton.Size = new System.Drawing.Size(75, 23);
+            this.SearcherButton.TabIndex = 34;
+            this.SearcherButton.Text = "Searcher";
+            this.SearcherButton.UseVisualStyleBackColor = true;
+            this.SearcherButton.Click += new System.EventHandler(this.SearcherButton_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(825, 630);
+            this.Controls.Add(this.SearcherButton);
             this.Controls.Add(this.PIDToLetterButton);
             this.Controls.Add(this.AdvancedCheck);
             this.Controls.Add(this.label2);
@@ -1067,6 +1080,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Power;
         private System.Windows.Forms.CheckBox AdvancedCheck;
         private System.Windows.Forms.Button PIDToLetterButton;
+        private System.Windows.Forms.Button SearcherButton;
     }
 }
 
