@@ -125,15 +125,15 @@ namespace Unown
             List<uint> origin = new List<uint>();
             for (uint hp = (uint)MinHPUD.Value; hp <= MaxHPUD.Value; hp++)
             {
-                for (uint atk = (uint)MinHPUD.Value; atk <= MaxHPUD.Value; atk++)
+                for (uint atk = (uint)MinATKUD.Value; atk <= MaxATKUD.Value; atk++)
                 {
-                    for (uint def = (uint)MinHPUD.Value; def <= MaxHPUD.Value; def++)
+                    for (uint def = (uint)MinDEFUD.Value; def <= MaxDEFUD.Value; def++)
                     {
-                        for (uint spe = (uint)MinHPUD.Value; spe <= MaxHPUD.Value; spe++)
+                        for (uint spe = (uint)MinSPEUD.Value; spe <= MaxSPEUD.Value; spe++)
                         {
-                            for (uint spa = (uint)MinHPUD.Value; spa <= MaxHPUD.Value; spa++)
+                            for (uint spa = (uint)MinSPAUD.Value; spa <= MaxSPAUD.Value; spa++)
                             {
-                                for (uint spd = (uint)MinHPUD.Value; spd <= MaxHPUD.Value; spd++)
+                                for (uint spd = (uint)MinSPDUD.Value; spd <= MaxSPDUD.Value; spd++)
                                 {
                                     origin.AddRange(Recover(hp, atk, def, spa, spd, spe));
                                 }
