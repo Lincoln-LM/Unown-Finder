@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Unown
 {
@@ -89,21 +90,21 @@ namespace Unown
                 MessageBox.Show("Error: TID/SID have not been entered properly, please fix this if you want shinies to be marked correctly.");
             }
 
-            string selectedLetter, selectedNature;
-            try
-            {
-                selectedLetter = FormComboBox.Text;
-            }
-            catch
+            string selectedLetter;
+            int selectedNature, selectedLetterTest;
+
+            
+            selectedLetter = FormComboBox.Text;
+            selectedLetterTest = characters.IndexOf(selectedLetter);
+
+            if (selectedLetterTest < 0 & FormCheckBox.Checked)
             {
                 MessageBox.Show("Error: Chosen Form has not been entered properly, please fix this or uncheck the Form box if you want results.");
                 return;
             }
-            try
-            {
-                selectedNature = NatureCheckBox.Text;
-            }
-            catch
+
+            selectedNature = natures.IndexOf(NatureComboBox.Text);
+            if (selectedNature < 0 & NatureCheckBox.Checked) 
             {
                 MessageBox.Show("Error: Chosen Nature has not been entered properly, please fix this or uncheck the Nature box if you want results.");
                 return;
@@ -148,7 +149,8 @@ namespace Unown
                 
                 
                 uint psv = ((pid & 0xFFFF) ^ (pid >> 16)) / 8;
-                string nature = natures[(int)(pid % 25)];
+                int natureint = (int)(pid % 25);
+                string nature = natures[natureint];
 
                 if (tsv == psv)
                 {
@@ -169,7 +171,7 @@ namespace Unown
                     flag = false;
                 }
 
-                if (NatureCheckBox.Checked & !(selectedNature == nature))
+                if (NatureCheckBox.Checked & !(selectedNature == natureint))
                 {
                     flag = false;
                 }
