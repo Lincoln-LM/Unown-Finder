@@ -1,7 +1,7 @@
 # Unown-Finder
 Gen 3 Unown RNG Tool
 
-![screenshot](https://i.imgur.com/gdmXDQt.png)
+![screenshot](https://i.imgur.com/U0VdbQz.png)
 
 [Download](https://github.com/Lincoln-LM/Unown-Finder/releases)
 
