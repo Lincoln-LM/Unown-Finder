@@ -15,9 +15,10 @@ namespace Unown
     public partial class Searcher : Form
     {
         public uint tsv;
-        public Searcher(uint tsv)
+        public Searcher(uint enteredtsv)
         {
             InitializeComponent();
+            tsv = enteredtsv;
         }
 
         public List<uint> Recover(uint hp, uint atk, uint def, uint spa, uint spd, uint spe)
@@ -40,7 +41,7 @@ namespace Unown
             count = 0;
             foreach (bool element in flags)
             {
-                flags[count] = true;
+                flags[count] = false;
                 count++;
             }
             for (short i = 0; i < 256; i++)
@@ -48,9 +49,9 @@ namespace Unown
                 uint right = (uint)(mult * i + add);
                 ushort val = (ushort)(right >> 16);
                 flags[val] = true;
-                low[val--] = (byte)(i);
+                low[val--] = (byte)i;
                 flags[val] = true;
-                low[val] = (byte)(i);
+                low[val] = (byte)i;
             }
 
             List<uint> origin = new List<uint>();
@@ -58,7 +59,7 @@ namespace Unown
             uint second = (spe | (spa << 5) | (spd << 10)) << 16;
 
             uint search1 = second - first * mult;
-            uint search2 = second - (first ^ 0x80000000);
+            uint search2 = second - ((first ^ 0x80000000) * mult);
 
             for (uint i = 0; i < 256; i++, search1 -= k, search2 -= k)
             {
@@ -83,7 +84,7 @@ namespace Unown
             return origin;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+    private void button1_Click(object sender, EventArgs e)
         {
 
             string selectedLetter;
@@ -151,7 +152,7 @@ namespace Unown
                     uint valmod = val;
                     if (opp)
                     {
-                        valmod = valmod ^ 0x80000000;
+                        valmod ^= 0x80000000;
                     }
                     PokeRNGR rng = new PokeRNGR(valmod);
                     uint plow = rng.nextUShort();
@@ -169,7 +170,7 @@ namespace Unown
                         uint pidtest = phightest << 16 | plowtest;
                         go.nextUInt();
                         uint slot = go.nextUShort() % 100;
-                        List<String> letterslots = GetLetterSlots(slot);
+                        List<string> letterslots = GetLetterSlots(slot);
                         if (GetLetter(pidtest) == GetLetter(pid))
                         {
                             sflag = true;
@@ -213,8 +214,8 @@ namespace Unown
 
                             if (ShinyCheckBox.Checked)
                             {
-                                if (!(tsv == psv))
-                                {
+                               if (!(tsv == psv))
+                               {
                                     flag = false;
                                 }
 
@@ -236,6 +237,7 @@ namespace Unown
                                 dataGridView1.Rows.Add(seed.ToString("X"), pid2.ToString("X"), psv, shiny, slot, GetLetter(pid2), nature, ivs[0], ivs[1], ivs[2], ivs[3], ivs[4], ivs[5], GetHPowerType(ivs), GetHPowerDamage(ivs));
 
                             }
+                            
                         }
 
                         rng.nextUInt();
@@ -310,7 +312,7 @@ namespace Unown
                                                             "P", "Q", "R", "S", "T",
                                                             "U", "V", "W", "X", "Y",
                                                                  "Z", "!", "?" };
-        private String GetLetter(uint pid)
+        private string GetLetter(uint pid)
         {
             uint val1, val2, val3, val4, val;
             val1 = (pid >> 24) & 3;
@@ -321,7 +323,7 @@ namespace Unown
             return characters[(int)val % 28];
         }
 
-        private String GetTargetLetter(uint location, uint slot)
+        private string GetTargetLetter(uint location, uint slot)
         {
             if (location == 0)
             {
@@ -501,9 +503,9 @@ namespace Unown
 
         }
 
-        private List<String> GetLetterSlots(uint slot)
+        private List<string> GetLetterSlots(uint slot)
         {
-            List<String> letterslots = new List<String>();
+            List<string> letterslots = new List<string>();
             if (slot < 99)
             {
                 letterslots.Add("A");
@@ -624,7 +626,6 @@ namespace Unown
         }
         private void AdvancedCheck_CheckedChanged(object sender, EventArgs e)
         {
-            dataGridView1.Columns["Seed"].Visible = AdvancedCheck.Checked;
             dataGridView1.Columns["PSV"].Visible = AdvancedCheck.Checked;
             dataGridView1.Columns["Slot"].Visible = AdvancedCheck.Checked;
         }
