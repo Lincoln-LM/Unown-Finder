@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B1F5091B-4629-4636-93C4-5EB20286B50B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Unown</RootNamespace>
-    <AssemblyName>Unown</AssemblyName>
+    <RootNamespace>UnownFinder</RootNamespace>
+    <AssemblyName>UnownFinder</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -82,6 +82,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Searcher.resx">
       <DependentUpon>Searcher.cs</DependentUpon>
